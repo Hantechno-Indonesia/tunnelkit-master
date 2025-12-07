@@ -1,0 +1,3 @@
+[submodule "wireguard-apple-module"]
+	path = wireguard-apple-module
+	url = https://github.com/WireGuard/wireguard-apple
