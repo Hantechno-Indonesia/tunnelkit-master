@@ -46,7 +46,7 @@ let package = Package(
 //        .package(url: "https://github.com/passepartoutvpn/wireguard-apple", exact: Version("1.0.17")),
 //        .package(url: "https://github.com/passepartoutvpn/wireguard-apple", revision: "b79f0f150356d8200a64922ecf041dd020140aa0")
 //        .package(url: "https://github.com/passepartoutvpn/wireguard-apple", branch: "develop")
-        .package(url: "https://github.com/WireGuard/wireguard-apple", branch: "master")
+        .package(url: "https://github.com/partout-io/passepartout", branch: "master")
 //        .package(name: "WireGuardKit", path: "../wireguard-apple")
     ],
     targets: [
