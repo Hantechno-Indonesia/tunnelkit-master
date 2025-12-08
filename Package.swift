@@ -8,7 +8,7 @@ let package = Package(
     platforms: [
         .iOS(.v15),
         .macOS(.v12),
-        .tvOS(.v16)
+        .tvOS(.v16),
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
@@ -35,20 +35,22 @@ let package = Package(
         .library(
             name: "TunnelKitLZO",
             targets: ["TunnelKitLZO"]
-        )
+        ),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
         .package(url: "https://github.com/SwiftyBeaver/SwiftyBeaver", from: "2.1.1"),
         .package(url: "https://github.com/passepartoutvpn/openssl-apple", from: "3.2.107"),
-//        .package(url: "https://git.zx2c4.com/wireguard-apple", .exact: Version("1.0.15-26")),
-//        .package(url: "https://github.com/passepartoutvpn/wireguard-apple", exact: Version("1.0.17")),
-//        .package(url: "https://github.com/passepartoutvpn/wireguard-apple", revision: "b79f0f150356d8200a64922ecf041dd020140aa0")
-//        .package(url: "https://github.com/passepartoutvpn/wireguard-apple", branch: "develop")
-//        .package(url: "https://github.com/WireGuard/wireguard-apple", branch: "master")
-        .package(url: "https://github.com/Hantechno-Indonesia/wireguard-apple-custom", branch: "main")
-//        .package(name: "WireGuardKit", path: "../wireguard-apple")
+        .package(
+            url: "https://github.com/Hantechno-Indonesia/wireguard-apple", branch: "main"),
+        //        .package(url: "https://git.zx2c4.com/wireguard-apple", .exact: Version("1.0.15-26")),
+        //        .package(url: "https://github.com/passepartoutvpn/wireguard-apple", exact: Version("1.0.17")),
+        //        .package(url: "https://github.com/passepartoutvpn/wireguard-apple", revision: "b79f0f150356d8200a64922ecf041dd020140aa0")
+        //        .package(url: "https://github.com/passepartoutvpn/wireguard-apple", branch: "develop")
+        //        .package(url: "https://github.com/WireGuard/wireguard-apple", branch: "master")
+        //        .package(url: "https://github.com/Hantechno-Indonesia/wireguard-apple-custom", branch: "main")
+        //        .package(name: "WireGuardKit", path: "../wireguard-apple")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -57,7 +59,7 @@ let package = Package(
             name: "TunnelKit",
             dependencies: [
                 "TunnelKitCore",
-                "TunnelKitManager"
+                "TunnelKitManager",
             ]
         ),
         .target(
@@ -65,7 +67,7 @@ let package = Package(
             dependencies: [
                 "__TunnelKitUtils",
                 "CTunnelKitCore",
-                "SwiftyBeaver"
+                "SwiftyBeaver",
             ]),
         .target(
             name: "TunnelKitManager",
@@ -81,7 +83,7 @@ let package = Package(
             name: "TunnelKitOpenVPN",
             dependencies: [
                 "TunnelKitOpenVPNCore",
-                "TunnelKitOpenVPNManager"
+                "TunnelKitOpenVPNManager",
             ]),
         //
         .target(
@@ -89,19 +91,19 @@ let package = Package(
             dependencies: [
                 "TunnelKitCore",
                 "CTunnelKitOpenVPNCore",
-                "CTunnelKitOpenVPNProtocol" // FIXME: remove dependency on TLSBox
+                "CTunnelKitOpenVPNProtocol",  // FIXME: remove dependency on TLSBox
             ]),
         .target(
             name: "TunnelKitOpenVPNManager",
             dependencies: [
                 "TunnelKitManager",
-                "TunnelKitOpenVPNCore"
+                "TunnelKitOpenVPNCore",
             ]),
         .target(
             name: "TunnelKitOpenVPNProtocol",
             dependencies: [
                 "TunnelKitOpenVPNCore",
-                "CTunnelKitOpenVPNProtocol"
+                "CTunnelKitOpenVPNProtocol",
             ]),
         .target(
             name: "TunnelKitOpenVPNAppExtension",
@@ -109,14 +111,14 @@ let package = Package(
                 "TunnelKitAppExtension",
                 "TunnelKitOpenVPNCore",
                 "TunnelKitOpenVPNManager",
-                "TunnelKitOpenVPNProtocol"
+                "TunnelKitOpenVPNProtocol",
             ]),
         //
         .target(
             name: "TunnelKitWireGuard",
             dependencies: [
                 "TunnelKitWireGuardCore",
-                "TunnelKitWireGuardManager"
+                "TunnelKitWireGuardManager",
             ]),
         .target(
             name: "TunnelKitWireGuardCore",
@@ -124,19 +126,19 @@ let package = Package(
                 "__TunnelKitUtils",
                 "TunnelKitCore",
                 .product(name: "WireGuardKit", package: "wireguard-apple"),
-                "SwiftyBeaver"
+                "SwiftyBeaver",
             ]),
         .target(
             name: "TunnelKitWireGuardManager",
             dependencies: [
                 "TunnelKitManager",
-                "TunnelKitWireGuardCore"
+                "TunnelKitWireGuardCore",
             ]),
         .target(
             name: "TunnelKitWireGuardAppExtension",
             dependencies: [
                 "TunnelKitWireGuardCore",
-                "TunnelKitWireGuardManager"
+                "TunnelKitWireGuardManager",
             ]),
         .target(
             name: "TunnelKitLZO",
@@ -145,7 +147,7 @@ let package = Package(
                 "lib/COPYING",
                 "lib/Makefile",
                 "lib/README.LZO",
-                "lib/testmini.c"
+                "lib/testmini.c",
             ]),
         //
         .target(
@@ -159,7 +161,7 @@ let package = Package(
             dependencies: [
                 "CTunnelKitCore",
                 "CTunnelKitOpenVPNCore",
-                "openssl-apple"
+                "openssl-apple",
             ]),
         .target(
             name: "__TunnelKitUtils",
@@ -173,18 +175,18 @@ let package = Package(
             exclude: [
                 "RandomTests.swift",
                 "RawPerformanceTests.swift",
-                "RoutingTests.swift"
+                "RoutingTests.swift",
             ]),
         .testTarget(
             name: "TunnelKitOpenVPNTests",
             dependencies: [
                 "TunnelKitOpenVPNCore",
                 "TunnelKitOpenVPNAppExtension",
-                "TunnelKitLZO"
+                "TunnelKitLZO",
             ],
             exclude: [
                 "DataPathPerformanceTests.swift",
-                "EncryptionPerformanceTests.swift"
+                "EncryptionPerformanceTests.swift",
             ],
             resources: [
                 .process("Resources")
@@ -193,7 +195,7 @@ let package = Package(
             name: "TunnelKitLZOTests",
             dependencies: [
                 "TunnelKitCore",
-                "TunnelKitLZO"
-            ])
+                "TunnelKitLZO",
+            ]),
     ]
 )
