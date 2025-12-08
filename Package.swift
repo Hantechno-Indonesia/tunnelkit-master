@@ -47,7 +47,8 @@ let package = Package(
 //        .package(url: "https://github.com/passepartoutvpn/wireguard-apple", revision: "b79f0f150356d8200a64922ecf041dd020140aa0")
 //        .package(url: "https://github.com/passepartoutvpn/wireguard-apple", branch: "develop")
 //        .package(url: "https://github.com/WireGuard/wireguard-apple", branch: "master")
-        .package(name: "WireGuardKit", path: "./wireguard-apple-module")
+        .package(url: "https://github.com/Hantechno-Indonesia/wireguard-apple-custom", branch: "main")
+//        .package(name: "WireGuardKit", path: "../wireguard-apple")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -122,7 +123,7 @@ let package = Package(
             dependencies: [
                 "__TunnelKitUtils",
                 "TunnelKitCore",
-                .product(name: "WireGuardKit", package: "WireGuardKit"),
+                .product(name: "WireGuardKit", package: "wireguard-apple"),
                 "SwiftyBeaver"
             ]),
         .target(
